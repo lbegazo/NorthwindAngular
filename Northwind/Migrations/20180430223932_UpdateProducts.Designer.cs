@@ -11,9 +11,10 @@ using System;
 namespace Northwind.Migrations
 {
     [DbContext(typeof(NorthwindContext))]
-    partial class NorthwindContextModelSnapshot : ModelSnapshot
+    [Migration("20180430223932_UpdateProducts")]
+    partial class UpdateProducts
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,76 +39,6 @@ namespace Northwind.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
-                });
-
-            modelBuilder.Entity("Northwind.Models.CustomerCustomerDemo", b =>
-                {
-                    b.Property<string>("CustomerId");
-
-                    b.Property<string>("CustomerTypeId");
-
-                    b.HasKey("CustomerId", "CustomerTypeId");
-
-                    b.HasIndex("CustomerTypeId");
-
-                    b.ToTable("CustomerCustomerDemo");
-                });
-
-            modelBuilder.Entity("Northwind.Models.CustomerDemographics", b =>
-                {
-                    b.Property<string>("CustomerTypeId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("CustomerTypeID")
-                        .HasColumnType("nchar(10)");
-
-                    b.Property<string>("CustomerDesc")
-                        .HasColumnType("ntext");
-
-                    b.HasKey("CustomerTypeId");
-
-                    b.ToTable("CustomerDemographics");
-                });
-
-            modelBuilder.Entity("Northwind.Models.Customers", b =>
-                {
-                    b.Property<string>("CustomerId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("nchar(5)");
-
-                    b.Property<string>("Address")
-                        .HasMaxLength(60);
-
-                    b.Property<string>("City")
-                        .HasMaxLength(15);
-
-                    b.Property<string>("CompanyName")
-                        .IsRequired()
-                        .HasMaxLength(40);
-
-                    b.Property<string>("ContactName")
-                        .HasMaxLength(30);
-
-                    b.Property<string>("ContactTitle")
-                        .HasMaxLength(30);
-
-                    b.Property<string>("Country")
-                        .HasMaxLength(15);
-
-                    b.Property<string>("Fax")
-                        .HasMaxLength(24);
-
-                    b.Property<string>("Phone")
-                        .HasMaxLength(24);
-
-                    b.Property<string>("PostalCode")
-                        .HasMaxLength(10);
-
-                    b.Property<string>("Region")
-                        .HasMaxLength(15);
-
-                    b.HasKey("CustomerId");
-
-                    b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("Northwind.Models.Products", b =>
@@ -255,19 +186,6 @@ namespace Northwind.Migrations
                     b.HasIndex("RegionId");
 
                     b.ToTable("Territories");
-                });
-
-            modelBuilder.Entity("Northwind.Models.CustomerCustomerDemo", b =>
-                {
-                    b.HasOne("Northwind.Models.Customers", "Customer")
-                        .WithMany("CustomerCustomerDemos")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Northwind.Models.CustomerDemographics", "CustomerDemographic")
-                        .WithMany("CustomerCustomerDemos")
-                        .HasForeignKey("CustomerTypeId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Northwind.Models.Products", b =>

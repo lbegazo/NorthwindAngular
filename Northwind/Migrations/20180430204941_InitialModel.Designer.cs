@@ -11,7 +11,7 @@ using System;
 namespace Northwind.Migrations
 {
     [DbContext(typeof(NorthwindContext))]
-    [Migration("20180430133203_InitialModel")]
+    [Migration("20180430204941_InitialModel")]
     partial class InitialModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,36 +21,24 @@ namespace Northwind.Migrations
                 .HasAnnotation("ProductVersion", "2.0.2-rtm-10011")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Northwind.Models.Region", b =>
+            modelBuilder.Entity("Northwind.Models.Categories", b =>
                 {
-                    b.Property<int>("RegionId")
-                        .HasColumnName("RegionID");
+                    b.Property<int>("CategoryId")
+                        .ValueGeneratedOnAdd();
 
-                    b.Property<string>("RegionDescription")
+                    b.Property<string>("CategoryName")
                         .IsRequired()
-                        .HasColumnType("nchar(50)");
+                        .HasMaxLength(15);
 
-                    b.HasKey("RegionId");
+                    b.Property<string>("Description")
+                        .HasColumnType("nText");
 
-                    b.ToTable("Region");
-                });
+                    b.Property<byte[]>("Picture")
+                        .HasColumnType("image");
 
-            modelBuilder.Entity("Northwind.Models.Shippers", b =>
-                {
-                    b.Property<int>("ShipperId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("ShipperID");
+                    b.HasKey("CategoryId");
 
-                    b.Property<string>("CompanyName")
-                        .IsRequired()
-                        .HasMaxLength(40);
-
-                    b.Property<string>("Phone")
-                        .HasMaxLength(24);
-
-                    b.HasKey("ShipperId");
-
-                    b.ToTable("Shippers");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("Northwind.Models.Suppliers", b =>
@@ -102,35 +90,6 @@ namespace Northwind.Migrations
                         .HasName("PostalCode");
 
                     b.ToTable("Suppliers");
-                });
-
-            modelBuilder.Entity("Northwind.Models.Territories", b =>
-                {
-                    b.Property<string>("TerritoryId")
-                        .HasColumnName("TerritoryID")
-                        .HasMaxLength(20);
-
-                    b.Property<int>("RegionId")
-                        .HasColumnName("RegionID");
-
-                    b.Property<string>("TerritoryDescription")
-                        .IsRequired()
-                        .HasColumnType("nchar(50)");
-
-                    b.HasKey("TerritoryId")
-                        .HasAnnotation("SqlServer:Clustered", false);
-
-                    b.HasIndex("RegionId");
-
-                    b.ToTable("Territories");
-                });
-
-            modelBuilder.Entity("Northwind.Models.Territories", b =>
-                {
-                    b.HasOne("Northwind.Models.Region", "Region")
-                        .WithMany("Territories")
-                        .HasForeignKey("RegionId")
-                        .HasConstraintName("FK_Territories_Region");
                 });
 #pragma warning restore 612, 618
         }

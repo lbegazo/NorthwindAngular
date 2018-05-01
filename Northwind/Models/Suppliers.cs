@@ -17,5 +17,11 @@ namespace Northwind.Models
         public string Phone { get; set; }
         public string Fax { get; set; }
         public string HomePage { get; set; }
+        public ICollection<Products> Products { get; set; }
+
+        public Suppliers()
+        {
+            Products = new HashSet<Products>();
+        }
     }
 }

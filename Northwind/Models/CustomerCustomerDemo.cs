@@ -7,5 +7,9 @@ namespace Northwind.Models
     {
         public string CustomerId { get; set; }
         public string CustomerTypeId { get; set; }
+
+        public Customers Customer { get; set; }
+
+        public CustomerDemographics CustomerDemographic { get; set; }
     }
 }

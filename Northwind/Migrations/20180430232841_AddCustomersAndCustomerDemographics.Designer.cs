@@ -11,9 +11,10 @@ using System;
 namespace Northwind.Migrations
 {
     [DbContext(typeof(NorthwindContext))]
-    partial class NorthwindContextModelSnapshot : ModelSnapshot
+    [Migration("20180430232841_AddCustomersAndCustomerDemographics")]
+    partial class AddCustomersAndCustomerDemographics
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,19 +39,6 @@ namespace Northwind.Migrations
                     b.HasKey("CategoryId");
 
                     b.ToTable("Categories");
-                });
-
-            modelBuilder.Entity("Northwind.Models.CustomerCustomerDemo", b =>
-                {
-                    b.Property<string>("CustomerId");
-
-                    b.Property<string>("CustomerTypeId");
-
-                    b.HasKey("CustomerId", "CustomerTypeId");
-
-                    b.HasIndex("CustomerTypeId");
-
-                    b.ToTable("CustomerCustomerDemo");
                 });
 
             modelBuilder.Entity("Northwind.Models.CustomerDemographics", b =>
@@ -255,19 +243,6 @@ namespace Northwind.Migrations
                     b.HasIndex("RegionId");
 
                     b.ToTable("Territories");
-                });
-
-            modelBuilder.Entity("Northwind.Models.CustomerCustomerDemo", b =>
-                {
-                    b.HasOne("Northwind.Models.Customers", "Customer")
-                        .WithMany("CustomerCustomerDemos")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Northwind.Models.CustomerDemographics", "CustomerDemographic")
-                        .WithMany("CustomerCustomerDemos")
-                        .HasForeignKey("CustomerTypeId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Northwind.Models.Products", b =>
