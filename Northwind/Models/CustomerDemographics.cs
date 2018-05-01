@@ -10,11 +10,11 @@ namespace Northwind.Models
 
         
 
-        public ICollection<CustomerCustomerDemo> CustomerCustomerDemos { get; set; }
+        public ICollection<Territories> CustomerCustomerDemos { get; set; }
 
         public CustomerDemographics()
         {
-            CustomerCustomerDemos = new HashSet<CustomerCustomerDemo>();
+            CustomerCustomerDemos = new HashSet<Territories>();
         }
     }
 }

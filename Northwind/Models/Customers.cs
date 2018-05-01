@@ -16,11 +16,11 @@ namespace Northwind.Models
         public string Country { get; set; }
         public string Phone { get; set; }
         public string Fax { get; set; }
-        public ICollection<CustomerCustomerDemo> CustomerCustomerDemos { get; set; }
+        public ICollection<Territories> CustomerCustomerDemos { get; set; }
 
         public Customers()
         {
-            CustomerCustomerDemos = new HashSet<CustomerCustomerDemo>();
+            CustomerCustomerDemos = new HashSet<Territories>();
         }
     }
 }
