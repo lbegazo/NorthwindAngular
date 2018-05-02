@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Northwind.Models.EntityConfigurations
 {
-    public class ShippersConfiguration : IEntityTypeConfiguration<Shippers>
+    public class ShippersConfiguration : IEntityTypeConfiguration<Shipper>
     {
-        public void Configure(EntityTypeBuilder<Shippers> entity)
+        public void Configure(EntityTypeBuilder<Shipper> entity)
         {
             #region Shippers
 

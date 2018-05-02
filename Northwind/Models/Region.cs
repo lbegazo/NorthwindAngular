@@ -7,12 +7,12 @@ namespace Northwind.Models
     {
         public Region()
         {
-            Territories = new HashSet<Territories>();
+            Territories = new HashSet<Territorie>();
         }
 
         public int RegionId { get; set; }
         public string RegionDescription { get; set; }
 
-        public ICollection<Territories> Territories { get; set; }
+        public ICollection<Territorie> Territories { get; set; }
     }
 }

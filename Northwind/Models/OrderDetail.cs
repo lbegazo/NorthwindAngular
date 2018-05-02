@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Northwind.Models
 {
-    public partial class OrderDetails
+    public partial class OrderDetail
     {
         public int OrderId { get; set; }
         public int ProductId { get; set; }
@@ -12,6 +12,6 @@ namespace Northwind.Models
         public float Discount { get; set; }
 
         public Orders Order { get; set; }
-        public Products Product { get; set; }
+        public Product Product { get; set; }
     }
 }

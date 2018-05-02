@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace Northwind.Models
 {
-    public partial class Suppliers
+    public partial class Customer
     {
-        public int SupplierId { get; set; }
+        public string CustomerId { get; set; }
         public string CompanyName { get; set; }
         public string ContactName { get; set; }
         public string ContactTitle { get; set; }
@@ -16,12 +16,11 @@ namespace Northwind.Models
         public string Country { get; set; }
         public string Phone { get; set; }
         public string Fax { get; set; }
-        public string HomePage { get; set; }
-        public ICollection<Products> Products { get; set; }
+        public ICollection<CustomerCustomerDemo> CustomerCustomerDemos { get; set; }
 
-        public Suppliers()
+        public Customer()
         {
-            Products = new HashSet<Products>();
+            CustomerCustomerDemos = new HashSet<CustomerCustomerDemo>();
         }
     }
 }

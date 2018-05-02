@@ -7,13 +7,12 @@ using System.Threading.Tasks;
 
 namespace Northwind.Models.EntityConfigurations
 {
-    public class CustomerCustomerDemoConfiguration : IEntityTypeConfiguration<Territories>
+    public class CustomerCustomerDemoConfiguration : IEntityTypeConfiguration<CustomerCustomerDemo>
     {
-        public void Configure(EntityTypeBuilder<Territories> entity)
+        public void Configure(EntityTypeBuilder<CustomerCustomerDemo> entity)
         {
 
             #region CustomerCustomerDemo
-
 
             entity.HasKey(cc => new { cc.CustomerId, cc.CustomerTypeId });
 
@@ -24,8 +23,6 @@ namespace Northwind.Models.EntityConfigurations
             entity.HasOne(cc => cc.CustomerDemographic)
                 .WithMany(cd => cd.CustomerCustomerDemos)
                 .HasForeignKey(cc => cc.CustomerTypeId);
-
-
 
             #endregion CustomerCustomerDemo
         }

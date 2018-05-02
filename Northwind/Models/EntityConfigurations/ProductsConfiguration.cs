@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Northwind.Models.EntityConfigurations
 {
-    public class ProductsConfiguration : IEntityTypeConfiguration<Products>
+    public class ProductsConfiguration : IEntityTypeConfiguration<Product>
     {
-        public void Configure(EntityTypeBuilder<Products> entity)
+        public void Configure(EntityTypeBuilder<Product> entity)
         {
             #region Products
 

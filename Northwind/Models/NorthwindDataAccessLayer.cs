@@ -17,7 +17,7 @@ namespace Northwind.Models
             this.db = db;
         }
 
-        public IEnumerable<Suppliers> getAllSuppliers()
+        public IEnumerable<Supplier> getAllSuppliers()
         {
             try
             {
@@ -31,7 +31,7 @@ namespace Northwind.Models
 
         }
 
-        public Suppliers getSupplier(int id)
+        public Supplier getSupplier(int id)
         {
             try
             {
@@ -45,7 +45,7 @@ namespace Northwind.Models
             }
         }
 
-        public int UpdateSupplier(Suppliers supplier)
+        public int UpdateSupplier(Supplier supplier)
         {
             try
             {
@@ -60,7 +60,7 @@ namespace Northwind.Models
             }
         }
 
-        public int AddSupplier(Suppliers supplier)
+        public int AddSupplier(Supplier supplier)
         {
             try
             {
@@ -79,7 +79,7 @@ namespace Northwind.Models
         {
             try
             {
-                Suppliers supplier = db.Suppliers.Find(id);
+                Supplier supplier = db.Suppliers.Find(id);
                 db.Suppliers.Remove(supplier);
                 db.SaveChanges();
                 return 1;

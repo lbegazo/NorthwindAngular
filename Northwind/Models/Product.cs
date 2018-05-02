@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Northwind.Models
 {
-    public partial class Products
+    public partial class Product
     {
-        public Products()
+        public Product()
         {
             //OrderDetails = new HashSet<OrderDetails>();
         }
@@ -18,10 +18,10 @@ namespace Northwind.Models
         [Column(Order = 3)]
         public int? SupplierId { get; set; }
 
-        public Suppliers Supplier { get; set; }
+        public Supplier Supplier { get; set; }
         [Column(Order = 4)]
         public int? CategoryId { get; set; }
-        public Categories Category { get; set; }
+        public Categorie Category { get; set; }
         [Column(Order = 5)]
         public string QuantityPerUnit { get; set; }
         [Column(Order = 6)]

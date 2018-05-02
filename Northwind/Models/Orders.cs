@@ -7,7 +7,7 @@ namespace Northwind.Models
     {
         public Orders()
         {
-            OrderDetails = new HashSet<OrderDetails>();
+            OrderDetails = new HashSet<OrderDetail>();
         }
 
         public int OrderId { get; set; }
@@ -25,6 +25,6 @@ namespace Northwind.Models
         public string ShipPostalCode { get; set; }
         public string ShipCountry { get; set; }
 
-        public ICollection<OrderDetails> OrderDetails { get; set; }
+        public ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Northwind.Models
 {
-    public partial class Shippers
+    public partial class Shipper
     {
         public int ShipperId { get; set; }
         public string CompanyName { get; set; }

@@ -20,7 +20,7 @@ namespace Northwind.Controllers
         }
 
         [HttpGet("api/Categories/Index")]
-        public IEnumerable<Categories> getAllCategories()
+        public IEnumerable<Categorie> getAllCategories()
         {
             //return dbContext.Categories.ToList();
             return null;
