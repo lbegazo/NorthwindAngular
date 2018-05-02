@@ -1,5 +1,9 @@
 USE Northwind2	
 
+select * from Categories
+select * from [Suppliers]
+select * from Customers
+
 	INSERT INTO northwind2.dbo.Categories(CategoryName,
 				Description,
 				Picture)

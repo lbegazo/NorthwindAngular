@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Northwind.Models.EntityConfigurations
 {
-    public class CategoriesConfiguration : IEntityTypeConfiguration<Categorie>
+    public class CategoriesConfiguration : IEntityTypeConfiguration<Category>
     {
-        public void Configure(EntityTypeBuilder<Categorie> entity)
+        public void Configure(EntityTypeBuilder<Category> entity)
         {
             #region Categories
 

@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Northwind.Controllers.Resources;
 using Northwind.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -12,26 +14,29 @@ namespace Northwind.Controllers
     public class SuppliersController : Controller
     {
         private readonly NorthwindContext db;
+        private readonly IMapper mapper;
 
-        public SuppliersController(NorthwindContext db)
+        public SuppliersController(NorthwindContext db, IMapper mapper)
         {
             this.db = db;
+            this.mapper = mapper;
         }
 
         // GET: api/<controller>
         [HttpGet]
         [Route("api/Supplier/Index")]
-        public IEnumerable<Supplier> Index()
+        public IEnumerable<SupplierResource> Index()
         {
-            return db.Suppliers.ToList();
+            var suppliers = db.Suppliers.ToList();
+            return mapper.Map<IEnumerable<Supplier>, IEnumerable<SupplierResource>>(suppliers);
         }
 
         // GET api/<controller>/5
-        [HttpGet("{id}")]
-        [Route("api/supplier/detail/{id}")]
-        public Supplier Details(int id)
+        [HttpGet("api/supplier/detail/{id}")]
+        public SupplierResource Details(int id)
         {
-            return db.Suppliers.Find(id);
+            var supplier = db.Suppliers.Find(id);
+            return mapper.Map<Supplier, SupplierResource>(supplier);
         }
 
         // POST api/<controller>

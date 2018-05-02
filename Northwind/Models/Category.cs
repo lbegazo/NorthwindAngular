@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Northwind.Models
 {
-    public partial class Categorie
+    public partial class Category
     {
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
@@ -12,7 +12,7 @@ namespace Northwind.Models
 
         public ICollection<Product> Products { get; set; }
 
-        public Categorie()
+        public Category()
         {
             Products = new HashSet<Product>();
         }

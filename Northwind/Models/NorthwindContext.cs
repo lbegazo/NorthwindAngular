@@ -12,7 +12,7 @@ namespace Northwind.Models
         { }
 
         public virtual DbSet<Supplier> Suppliers { get; set; }
-        public virtual DbSet<Categorie> Categories { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
         
         public virtual DbSet<Shipper> Shippers { get; set; }        
 

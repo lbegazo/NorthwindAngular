@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Northwind.Models;
+using AutoMapper;
 
 namespace Northwind
 {
@@ -26,6 +27,8 @@ namespace Northwind
         {
             services.AddDbContext<NorthwindContext>(
                 options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
+
+            services.AddAutoMapper();
 
             services.AddMvc();
         }
