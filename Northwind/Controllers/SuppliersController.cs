@@ -41,10 +41,14 @@ namespace Northwind.Controllers
 
         // POST api/<controller>
         [HttpPost("api/Supplier/Create/")]
-        public IActionResult Create([FromBody]Supplier supplier)
+        public async Task<IActionResult> Create([FromBody]SupplierResource supplierResource)
         {
-            //return db.AddSupplier(supplier);
-            return Ok(supplier);
+            var supplier = mapper.Map<SupplierResource, Supplier>(supplierResource);
+            db.Suppliers.Add(supplier);
+            await db.SaveChangesAsync();
+
+            var result = mapper.Map<Supplier, SupplierResource>(supplier);
+            return Ok(result);
         }
 
         // PUT api/<controller>/5

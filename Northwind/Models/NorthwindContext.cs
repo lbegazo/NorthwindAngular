@@ -18,7 +18,7 @@ namespace Northwind.Models
 
         public virtual DbSet<Region> Region { get; set; }
 
-        public virtual DbSet<Territorie> Territories { get; set; }
+        public virtual DbSet<Territory> Territories { get; set; }
 
         public virtual DbSet<Product> Products { get; set; }
 
@@ -27,6 +27,10 @@ namespace Northwind.Models
         public virtual DbSet<Customer> Customers { get; set; }
 
         public virtual DbSet<CustomerCustomerDemo> CustomerCustomerDemos { get; set; }
+
+        public virtual DbSet<Feature> Features { get; set; }
+
+        public virtual DbSet<ProductFeature> ProductFeatures { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -38,7 +42,7 @@ namespace Northwind.Models
 
             modelBuilder.ApplyConfiguration(new RegionConfiguration());
 
-            modelBuilder.ApplyConfiguration(new TerritoriesConfiguration());
+            modelBuilder.ApplyConfiguration(new TerritoryConfiguration());
 
             modelBuilder.ApplyConfiguration(new ProductsConfiguration());
 
@@ -48,6 +52,9 @@ namespace Northwind.Models
 
             modelBuilder.ApplyConfiguration(new CustomerCustomerDemoConfiguration());
 
+            modelBuilder.ApplyConfiguration(new FeatureConfiguration());
+
+            modelBuilder.ApplyConfiguration(new ProductFeatureConfiguration());
 
         }
     }

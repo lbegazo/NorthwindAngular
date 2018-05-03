@@ -35,5 +35,16 @@ namespace Northwind.Controllers
             var product = db.Products.Find(id);
             return mapper.Map<Product, ProductResource>(product);
         }
+
+        [HttpPost("api/Product/Create")]
+        public async Task<IActionResult> Create([FromBody] ProductResource productResource)
+        {
+            var product = mapper.Map<ProductResource, Product>(productResource);
+            db.Products.Add(product);
+            await db.SaveChangesAsync();
+
+            var result = mapper.Map<Product, ProductResource>(product);
+            return Ok(result);
+        }
     }
 }

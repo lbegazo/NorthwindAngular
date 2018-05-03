@@ -5,11 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Northwind.Models
 {
     public partial class Product
-    {
-        public Product()
-        {
-            //OrderDetails = new HashSet<OrderDetails>();
-        }
+    {       
         
         public int ProductId { get; set; }
         
@@ -34,5 +30,13 @@ namespace Northwind.Models
         
         public bool Discontinued { get; set; }
         //public ICollection<OrderDetails> OrderDetails { get; set; }
+
+        public ICollection<ProductFeature> Features { get; set; }
+
+        public Product()
+        {
+            //OrderDetails = new HashSet<OrderDetails>();
+            Features = new HashSet<ProductFeature>();
+        }
     }
 }

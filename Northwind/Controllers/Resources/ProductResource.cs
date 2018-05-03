@@ -7,21 +7,13 @@ namespace Northwind.Controllers.Resources
 {
     public class ProductResource
     {
-        public ProductResource()
-        {
-            //OrderDetails = new HashSet<OrderDetails>();
-        }
-
         public int ProductId { get; set; }
 
         public string ProductName { get; set; }
 
-        public int? SupplierId { get; set; }
+        public int? SupplierId { get; set; }        
 
-        public SupplierResource Supplier { get; set; }
-
-        public int? CategoryId { get; set; }
-        public CategoryResource Category { get; set; }
+        public int? CategoryId { get; set; }        
 
         public string QuantityPerUnit { get; set; }
 
@@ -34,5 +26,11 @@ namespace Northwind.Controllers.Resources
         public short? ReorderLevel { get; set; }
 
         public bool Discontinued { get; set; }
+        public ICollection<int> Features { get; set; }
+        public ProductResource()
+        {
+            Features = new HashSet<int>();
+            //OrderDetails = new HashSet<OrderDetails>();
+        }
     }
 }

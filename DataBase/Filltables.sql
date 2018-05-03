@@ -87,3 +87,13 @@ go
 				UnitsInStock,
 				UnitsOnOrder
 		FROM northwind.[dbo].[Products]
+
+go
+INSERT INTO Features
+VALUES('No tengo idea','Feature 1')
+
+INSERT INTO Features
+VALUES('Porque no lo hizo compañero','Feature 2')
+
+INSERT INTO Features
+VALUES('hagale mamao','Feature 3')

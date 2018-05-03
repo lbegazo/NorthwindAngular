@@ -7,34 +7,31 @@ using System.Threading.Tasks;
 
 namespace Northwind.Models.EntityConfigurations
 {
-    public class TerritoriesConfiguration : IEntityTypeConfiguration<Territorie>
+    public class TerritoryConfiguration : IEntityTypeConfiguration<Territory>
     {
-        public void Configure(EntityTypeBuilder<Territorie> entity)
+        public void Configure(EntityTypeBuilder<Territory> entity)
         {
-            #region Territories
+            #region Territory
 
-           
-                entity.HasKey(t => t.TerritoryId)
-                    .ForSqlServerIsClustered(false);
+            entity.HasKey(t => t.TerritoryId)
+                .ForSqlServerIsClustered(false);
 
-                entity.Property(t => t.TerritoryId)
-                    .HasColumnName("TerritoryID")
-                    .HasMaxLength(20)
-                    .ValueGeneratedNever();
+            entity.Property(t => t.TerritoryId)
+                .HasColumnName("TerritoryID")
+                .HasMaxLength(20)
+                .ValueGeneratedNever();
 
-                entity.Property(t => t.RegionId).HasColumnName("RegionID");
+            entity.Property(t => t.RegionId).HasColumnName("RegionID");
 
-                entity.Property(t => t.TerritoryDescription)
-                    .IsRequired()
-                    .HasColumnType("nchar(50)");
+            entity.Property(t => t.TerritoryDescription)
+                .IsRequired()
+                .HasColumnType("nchar(50)");
 
-                entity.HasOne(t => t.Region)
-                        .WithMany(p => p.Territories)
-                        .HasForeignKey(t => t.RegionId)
-                        .OnDelete(DeleteBehavior.ClientSetNull)
-                        .HasConstraintName("FK_Territories_Region");
-
-      
+            entity.HasOne(t => t.Region)
+                    .WithMany(p => p.Territories)
+                    .HasForeignKey(t => t.RegionId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Territories_Region");
 
             #endregion Territories
         }

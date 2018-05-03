@@ -11,12 +11,10 @@ namespace Northwind.Controllers.Resources
         public string CategoryName { get; set; }
         public string Description { get; set; }
         public byte[] Picture { get; set; }
-
-        public ICollection<ProductResource> Products { get; set; }
-
+        public ICollection<int> Products { get; set; }
         public CategoryResource()
         {
-            Products = new HashSet<ProductResource>();
+            Products = new HashSet<int>();
         }
     }
 }

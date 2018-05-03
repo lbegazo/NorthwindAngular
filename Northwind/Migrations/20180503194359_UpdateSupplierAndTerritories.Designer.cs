@@ -11,9 +11,10 @@ using System;
 namespace Northwind.Migrations
 {
     [DbContext(typeof(NorthwindContext))]
-    partial class NorthwindContextModelSnapshot : ModelSnapshot
+    [Migration("20180503194359_UpdateSupplierAndTerritories")]
+    partial class UpdateSupplierAndTerritories
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -318,13 +319,13 @@ namespace Northwind.Migrations
 
             modelBuilder.Entity("Northwind.Models.ProductFeature", b =>
                 {
-                    b.HasOne("Northwind.Models.Feature", "Feature")
-                        .WithMany("Products")
+                    b.HasOne("Northwind.Models.Product", "Product")
+                        .WithMany("Features")
                         .HasForeignKey("FeatureId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("Northwind.Models.Product", "Product")
-                        .WithMany("Features")
+                    b.HasOne("Northwind.Models.Feature", "Feature")
+                        .WithMany("Products")
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
