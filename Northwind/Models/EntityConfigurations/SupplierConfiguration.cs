@@ -53,6 +53,9 @@ namespace Northwind.Models.EntityConfigurations
 
             entity.Property(e => e.Region).HasMaxLength(15);
 
+            entity.Property(e => e.ContactEmail)
+                .HasMaxLength(60);
+
             #endregion Suppliers
         }
     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -10,6 +11,8 @@ namespace Northwind.Controllers.Resources
     {
         public int SupplierId { get; set; }
         public string CompanyName { get; set; }     
+
+        [Required]
         public ContactResource Contact { get; set; }
         public string Address { get; set; }
         public string City { get; set; }

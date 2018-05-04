@@ -33,16 +33,24 @@ namespace Northwind.Controllers
 
         // GET api/<controller>/5
         [HttpGet("api/supplier/detail/{id}")]
-        public SupplierResource Details(int id)
+        public async Task<IActionResult> Details(int id)
         {
-            var supplier = db.Suppliers.Find(id);
-            return mapper.Map<Supplier, SupplierResource>(supplier);
+            var supplier = await db.Suppliers.FindAsync(id);
+
+            if (supplier == null)
+                return NotFound();
+
+            var result =mapper.Map<Supplier, SupplierResource>(supplier);
+            return Ok(result);
         }
 
         // POST api/<controller>
         [HttpPost("api/Supplier/Create/")]
         public async Task<IActionResult> Create([FromBody]SupplierResource supplierResource)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             var supplier = mapper.Map<SupplierResource, Supplier>(supplierResource);
             db.Suppliers.Add(supplier);
             await db.SaveChangesAsync();
@@ -52,12 +60,20 @@ namespace Northwind.Controllers
         }
 
         // PUT api/<controller>/5
-        [HttpPut("{id}")]
-        [Route("api/Supplier/Edit/")]
-        public void Edit([FromBody]Supplier supplier)
+        [HttpPut("api/Supplier/Edit/{id}")]
+        public async Task<IActionResult> Edit(int id, [FromBody]SupplierResource supplierResource)
         {
-            db.Entry(supplier).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
-            db.SaveChanges();
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var supplier = await db.Suppliers.FindAsync(id);
+            mapper.Map<SupplierResource, Supplier>(supplierResource, supplier);
+
+            await db.SaveChangesAsync();
+
+            var result = mapper.Map<Supplier, SupplierResource>(supplier);
+
+            return Ok(result);
         }
 
         // DELETE api/<controller>/5

@@ -97,3 +97,9 @@ VALUES('Porque no lo hizo compañero','Feature 2')
 
 INSERT INTO Features
 VALUES('hagale mamao','Feature 3')
+
+INSERT INTO Features
+VALUES('hagale tanque','Feature 4')
+
+INSERT INTO Features
+VALUES('hagale Raula','Feature 5')
