@@ -1,9 +1,10 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Northwind.Models;
 using Northwind.Models.EntityConfigurations;
 
-namespace Northwind.Models
+namespace Northwind.Persistence
 {
     public partial class NorthwindContext : DbContext
     {

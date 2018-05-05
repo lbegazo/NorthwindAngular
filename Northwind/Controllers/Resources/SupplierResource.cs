@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 namespace Northwind.Controllers.Resources
 {
     
-    public class SupplierResource
+    public class SupplierResource : KeyValuePairResource
     {
-        public int SupplierId { get; set; }
-        public string CompanyName { get; set; }     
-
         [Required]
         public ContactResource Contact { get; set; }
         public string Address { get; set; }

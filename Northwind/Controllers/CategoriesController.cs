@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Northwind.Controllers.Resources;
 using Northwind.Models;
+using Northwind.Persistence;
 
 namespace Northwind.Controllers
 {
@@ -30,10 +31,15 @@ namespace Northwind.Controllers
         }
 
         [HttpGet("api/Categories/Details/{id}")]
-        public CategoryResource Detail(int id)
+        public IActionResult Detail(int id)
         {
             var category = dbContext.Categories.Find(id);
-            return mapper.Map<Category, CategoryResource>(category);
+
+            if (category == null)
+                return NotFound();
+
+            var result=mapper.Map<Category, CategoryResource>(category);
+            return Ok(result);
         }
 
     }

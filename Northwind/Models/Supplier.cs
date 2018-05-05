@@ -5,8 +5,8 @@ namespace Northwind.Models
 {
     public partial class Supplier
     {
-        public int SupplierId { get; set; }
-        public string CompanyName { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
         public string ContactName { get; set; }
         public string ContactTitle { get; set; }
         public string ContactEmail { get; set; }

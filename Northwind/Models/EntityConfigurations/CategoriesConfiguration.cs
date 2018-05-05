@@ -13,9 +13,12 @@ namespace Northwind.Models.EntityConfigurations
         {
             #region Categories
 
-            entity.HasKey(c => c.CategoryId);
+            entity.HasKey(c => c.Id);
 
-            entity.Property(c => c.CategoryName)
+            entity.Property(e=>e.Id)
+                .HasColumnName("ID");
+
+            entity.Property(c => c.Name)
                 .IsRequired()
                 .HasMaxLength(15);
 

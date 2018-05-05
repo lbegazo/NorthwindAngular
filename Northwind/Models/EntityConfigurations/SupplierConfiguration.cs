@@ -13,16 +13,16 @@ namespace Northwind.Models.EntityConfigurations
         {
             #region Suppliers
 
-            entity.HasKey(e => e.SupplierId);
+            entity.HasKey(e => e.Id);
 
-            entity.HasIndex(e => e.CompanyName)
-                .HasName("CompanyName");
+            entity.HasIndex(e => e.Name)
+                .HasName("Name");
 
             entity.HasIndex(e => e.PostalCode)
                 .HasName("PostalCode");
 
-            entity.Property(e => e.SupplierId)
-                .HasColumnName("SupplierID");
+            entity.Property(e => e.Id)
+                .HasColumnName("ID");
                 //.ValueGeneratedOnAdd();
 
             entity.Property(e => e.Address)
@@ -31,7 +31,7 @@ namespace Northwind.Models.EntityConfigurations
             entity.Property(e => e.City)
                 .HasMaxLength(15);
 
-            entity.Property(e => e.CompanyName)
+            entity.Property(e => e.Name)
                 .IsRequired()
                 .HasMaxLength(40);
 

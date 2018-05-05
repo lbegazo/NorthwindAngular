@@ -13,7 +13,7 @@ namespace Northwind.Models.EntityConfigurations
         {
             #region Products
 
-            entity.HasKey(p => p.ProductId);
+            entity.HasKey(p => p.Id);
 
             entity.HasOne(p => p.Category)
                 .WithMany(c => c.Products)
@@ -33,11 +33,11 @@ namespace Northwind.Models.EntityConfigurations
             entity.Property(p => p.SupplierId)
             .HasColumnName("SupplierID");
 
-            entity.Property(p => p.ProductId)
+            entity.Property(p => p.Id)
                 .IsRequired()
-                .HasColumnName("ProductID");
+                .HasColumnName("ID");
 
-            entity.Property(p => p.ProductName)
+            entity.Property(p => p.Name)
                 .IsRequired()
                 .HasMaxLength(40);
 

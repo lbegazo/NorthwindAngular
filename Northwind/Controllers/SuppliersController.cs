@@ -6,6 +6,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Northwind.Controllers.Resources;
 using Northwind.Models;
+using Northwind.Persistence;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -40,7 +41,7 @@ namespace Northwind.Controllers
             if (supplier == null)
                 return NotFound();
 
-            var result =mapper.Map<Supplier, SupplierResource>(supplier);
+            var result = mapper.Map<Supplier, SupplierResource>(supplier);
             return Ok(result);
         }
 
@@ -77,13 +78,17 @@ namespace Northwind.Controllers
         }
 
         // DELETE api/<controller>/5
-        [HttpDelete("{id}")]
-        [Route("api/Supplier/delete/{id}")]
-        public int Delete(int id)
+        [HttpDelete("api/Supplier/delete/{id}")]
+        public async Task<IActionResult> Delete(int id)
         {
-            Supplier supplier = db.Suppliers.Find(id);
+            Supplier supplier = await db.Suppliers.FindAsync(id);
+
+            if (supplier == null)
+                return NotFound();
+
             db.Suppliers.Remove(supplier);
-            return 1;
+            await db.SaveChangesAsync();
+            return Ok(id);
         }
     }
 }

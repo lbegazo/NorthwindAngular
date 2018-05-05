@@ -13,10 +13,10 @@ namespace Northwind.Models.EntityConfigurations
         {
             #region Feature
 
-            entity.HasKey(f => f.FeatureId);
+            entity.HasKey(f => f.Id);
 
-            entity.Property(f => f.FeatureId)
-                .HasColumnName("FeatureID");
+            entity.Property(f => f.Id)
+                .HasColumnName("ID");
 
             entity.Property(f => f.Name)
                 .IsRequired()

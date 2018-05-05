@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
 using Northwind.Models;
+using Northwind.Persistence;
 using System;
 
 namespace Northwind.Migrations
@@ -22,20 +23,21 @@ namespace Northwind.Migrations
 
             modelBuilder.Entity("Northwind.Models.Category", b =>
                 {
-                    b.Property<int>("CategoryId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("CategoryName")
-                        .IsRequired()
-                        .HasMaxLength(15);
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnName("ID");
 
                     b.Property<string>("Description")
                         .HasColumnType("nText");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(15);
+
                     b.Property<byte[]>("Picture")
                         .HasColumnType("image");
 
-                    b.HasKey("CategoryId");
+                    b.HasKey("Id");
 
                     b.ToTable("Categories");
                 });
@@ -112,9 +114,9 @@ namespace Northwind.Migrations
 
             modelBuilder.Entity("Northwind.Models.Feature", b =>
                 {
-                    b.Property<int>("FeatureId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("FeatureID");
+                        .HasColumnName("ID");
 
                     b.Property<string>("Description")
                         .HasMaxLength(255);
@@ -123,16 +125,16 @@ namespace Northwind.Migrations
                         .IsRequired()
                         .HasMaxLength(100);
 
-                    b.HasKey("FeatureId");
+                    b.HasKey("Id");
 
                     b.ToTable("Features");
                 });
 
             modelBuilder.Entity("Northwind.Models.Product", b =>
                 {
-                    b.Property<int>("ProductId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("ProductID");
+                        .HasColumnName("ID");
 
                     b.Property<int?>("CategoryId")
                         .HasColumnName("CategoryID");
@@ -140,7 +142,7 @@ namespace Northwind.Migrations
                     b.Property<bool>("Discontinued")
                         .HasColumnType("bit");
 
-                    b.Property<string>("ProductName")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(40);
 
@@ -162,7 +164,7 @@ namespace Northwind.Migrations
                     b.Property<short?>("UnitsOnOrder")
                         .HasColumnType("smallint");
 
-                    b.HasKey("ProductId");
+                    b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
 
@@ -218,19 +220,15 @@ namespace Northwind.Migrations
 
             modelBuilder.Entity("Northwind.Models.Supplier", b =>
                 {
-                    b.Property<int>("SupplierId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnName("SupplierID");
+                        .HasColumnName("ID");
 
                     b.Property<string>("Address")
                         .HasMaxLength(60);
 
                     b.Property<string>("City")
                         .HasMaxLength(15);
-
-                    b.Property<string>("CompanyName")
-                        .IsRequired()
-                        .HasMaxLength(40);
 
                     b.Property<string>("ContactEmail")
                         .HasMaxLength(60);
@@ -250,6 +248,10 @@ namespace Northwind.Migrations
                     b.Property<string>("HomePage")
                         .HasColumnType("ntext");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(40);
+
                     b.Property<string>("Phone")
                         .HasMaxLength(24);
 
@@ -259,10 +261,10 @@ namespace Northwind.Migrations
                     b.Property<string>("Region")
                         .HasMaxLength(15);
 
-                    b.HasKey("SupplierId");
+                    b.HasKey("Id");
 
-                    b.HasIndex("CompanyName")
-                        .HasName("CompanyName");
+                    b.HasIndex("Name")
+                        .HasName("Name");
 
                     b.HasIndex("PostalCode")
                         .HasName("PostalCode");

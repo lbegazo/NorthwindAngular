@@ -5,10 +5,8 @@ using System.Threading.Tasks;
 
 namespace Northwind.Controllers.Resources
 {
-    public class CategoryResource
+    public class CategoryResource : KeyValuePairResource
     {
-        public int CategoryId { get; set; }
-        public string CategoryName { get; set; }
         public string Description { get; set; }
         public byte[] Picture { get; set; }
         public ICollection<int> Products { get; set; }
