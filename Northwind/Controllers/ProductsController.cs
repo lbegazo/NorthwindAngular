@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Northwind.Controllers.Resources;
 using Northwind.Models;
-using Northwind.Persistence;
+using Northwind.Core;
 
 namespace Northwind.Controllers
 {

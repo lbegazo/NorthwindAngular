@@ -3,13 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Northwind.Persistence
+namespace Northwind.Core.Models
 {
-   
-
-    public interface IUnitOfWork
+    public class test
     {
-        Task CompleteAsync();
-
     }
 }

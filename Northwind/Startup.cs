@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Northwind.Models;
 using AutoMapper;
 using Northwind.Persistence;
+using Northwind.Core;
 
 namespace Northwind
 {

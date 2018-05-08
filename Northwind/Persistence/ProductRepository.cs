@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Northwind.Core;
 using Northwind.Models;
 using System;
 using System.Collections.Generic;
